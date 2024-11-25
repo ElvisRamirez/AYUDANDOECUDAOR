@@ -74,8 +74,10 @@ CREATE TABLE IF NOT EXISTS Ubicacion (
   provincia varchar(255) NOT NULL,
   canton varchar(255) NOT NULL, -- Campo para el cantón
   parroquia varchar(255) NOT NULL, -- Campo para la parroquia
-  altitud float NOT NULL,
-  latitud float NOT NULL,
+  altitud decimal(9,6) NOT NULL,
+
+ latitud decimal(9,6) NOT NULL,
+
   CONSTRAINT Ubicacion_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
 );
 DROP TABLE IF EXISTS Entidad;
