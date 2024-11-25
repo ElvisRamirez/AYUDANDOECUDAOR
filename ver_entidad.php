@@ -127,6 +127,7 @@ session_start();
         e.Entidad_Nombre,
         e.rama_accion,
         e.descripcion AS entidad_descripcion,
+        e.necesidad AS necesidad_entidad,
         f.foto_ruta,
         c.tipo AS clasificacion_tipo,
         uo.provincia,
@@ -148,7 +149,7 @@ session_start();
     LEFT JOIN Telefonos t ON e.id_dato = t.id_datos
     LEFT JOIN redes_sociales r ON e.id_dato = r.id_datos
     LEFT JOIN datos_adicionales da ON e.id_dato = da.id_dato
-    WHERE e.id_entidad = ?";
+    WHERE e.id_dato = ?";
 
         $stmt = $conn->prepare($sql);
         if (!$stmt) {
@@ -178,7 +179,7 @@ session_start();
         <h1 class='display-5 mb-0'>" . htmlspecialchars($row['Entidad_Nombre']) . "</h1>
           <h3 class='text-center text-muted'>" . htmlspecialchars($row['rama_accion']) . "</h3>
       
-        <hr class='w-25 mx-auto bg-primary'>
+       
     </div>
 
     <div class='row g-5'>
@@ -192,6 +193,18 @@ session_start();
                 <h3 class='ms-3'>Clasificación:</h3>
             </div>
                     <p>" . htmlspecialchars($row['clasificacion_tipo']) . "</p>
+
+                 <div class='d-flex align-items-center mb-3'>
+    <!-- Ícono circular -->
+    <div class='bg-primary rounded-circle d-flex align-items-center justify-content-center' style='width: 60px; height: 60px;'>
+        <i class='fa fa-lightbulb fs-4 text-white'></i>
+    </div>
+    <!-- Título ajustable -->
+    <h3 class='ms-3'>Necesidad:</h3>
+</div>
+<!-- Contenido dinámico -->
+<p>" . htmlspecialchars($row['necesidad_entidad']) . "</p>
+   
                 </div>
                 <div class='col-12'>
                    <div class='d-flex align-items-center mb-3'>
@@ -208,15 +221,53 @@ session_start();
             </div>
         </div>
 
-        <div class='col-lg-4'>
-            <div class='d-block bg-primary h-100 text-center'>
-                <img class='img-fluid' src='" . htmlspecialchars($row['foto_ruta']) . "' alt='Foto de la entidad'>
-                <div class='p-4'>
-                    <p class='text-white mb-4'>" . htmlspecialchars($row['entidad_descripcion']) . "</p>
-                   
-                </div>
-            </div>
-        </div>
+       <div class='col-lg-4'>
+    <div class='d-block bg-primary h-100 text-center'>
+       
+        <img 
+            class='img-fluid rounded-image' 
+            src='" . htmlspecialchars($row['foto_ruta']) . "' 
+            alt='Foto de la entidad'>
+       <div class='d-flex align-items-center mb-3'>
+    <!-- Ícono dentro de un círculo, que puede representar algún aspecto de la descripción -->
+    <div class='bg-primary rounded-circle d-flex align-items-center justify-content-center' style='width: 60px; height: 60px;'>
+        <i class='fa fa-info-circle fs-4 text-white'></i> <!-- Ícono informativo -->
+    </div>
+    <!-- Título de la sección de descripción -->
+    <h3 class='ms-3 text-white'>Descripción:</h3>
+</div>
+
+<div class='p-4'>
+    <!-- Descripción con texto blanco y margen adecuado -->
+    <p class='text-white mb-4'>" . htmlspecialchars($row['entidad_descripcion']) . "</p>
+</div>
+
+    </div>
+</div>
+<style>
+/* Clase para imágenes con tamaño fijo y bordes redondeados */
+.rounded-image {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    height: 200px; /* Tamaño fijo en altura */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+/* Efecto de zoom y sombra al pasar el mouse */
+.rounded-image:hover {
+    transform: scale(1.05); /* Zoom suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra atractiva */
+}
+
+/* Clase para el contenedor para centrado y consistencia */
+.bg-primary {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra envolvente */
+}
+</style>
+
 
         <div class='col-lg-4'>
             <div class='row g-5'>

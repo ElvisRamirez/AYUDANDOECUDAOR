@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $links = $_POST['links'] ?? '';
     $representante = $_POST['representante'] ?? '';
     $entidad_descripcion = $_POST['entidad_descripcion'] ?? '';
-
+    $necesidad_entidad = $_POST['necesidad_entidad'] ?? '';
     // Iniciar transacción
     $conn->begin_transaction();
 
@@ -71,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
 
         // 6. Actualizar Entidad
-        $sql = "UPDATE Entidad SET representante = ?, descripcion = ? WHERE id_dato = ?";
+        $sql = "UPDATE Entidad SET representante = ?, descripcion = ?,necesidad = ? WHERE id_dato = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssi", $representante, $entidad_descripcion, $id_datos);
+        $stmt->bind_param("sssi", $representante, $entidad_descripcion,$necesidad_entidad, $id_datos);
         $stmt->execute();
         $stmt->close();
 

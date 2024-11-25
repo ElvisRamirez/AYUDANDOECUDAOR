@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
         $representante = $_POST['representante'];
         $fuente_financiacion = $_POST['fuente_financiacion'];
         $descripcion = $_POST['descripcion'];
+        $necesidad = $_POST['necesidad']; // Captura el valor de la necesidad
         $tipo_cuenta = $_POST['tipo_cuenta'];
         $cuentas_bancarias = $_POST['cuentas_bancarias'];
         $telefono = $_POST['telefono'];
@@ -97,9 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                         $stmt->execute();
 
                         // Insertar en Entidad
-                        $stmt = $conn->prepare("INSERT INTO Entidad (id_dato, Entidad_Nombre, rama_accion, ruc, email, representante, fuente_financiacion, descripcion) 
-                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                        $stmt->bind_param("isssssss", $id_dato, $nombre_entidad, $rama_accion, $ruc, $email, $representante, $fuente_financiacion, $descripcion);
+                        $stmt = $conn->prepare("INSERT INTO Entidad (id_dato, Entidad_Nombre, rama_accion, ruc, email, representante, fuente_financiacion, descripcion,necesidad) 
+                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
+                        $stmt->bind_param("issssssss", $id_dato, $nombre_entidad, $rama_accion, $ruc, $email, $representante, $fuente_financiacion, $descripcion,$necesidad);
                         $stmt->execute();
 
                         // Insertar en datos_adicionales
@@ -357,7 +358,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                                 e.email AS entidad_email,
                                                 e.representante,
                                                 e.fuente_financiacion,
-                                                e.descripcion AS entidad_descripcion
+                                                e.descripcion AS entidad_descripcion,
+                                                e.necesidad AS necesidad_entidad
                                             FROM Usuarios u
                                             LEFT JOIN Datos d ON u.id_usuario = d.id_usuario
                                             LEFT JOIN Clasificacion c ON d.id_datos = c.id_datos
@@ -453,6 +455,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                                         </div>";
                                                     echo "<p>Descripción: " . htmlspecialchars($row['entidad_descripcion']) . "</p>";
                                                 }
+                                                if (!empty($row['necesidad_entidad'])) {
+                                                    echo "<div class='d-flex align-items-center mb-3'>
+                                                            <div class='bg-primary rounded-circle d-flex align-items-center justify-content-center' style='width: 60px; height: 60px;'>
+                                                                <i class='fa fa-lightbulb fs-4 text-white'></i>
+                                                            </div>
+                                                            <h3 class='ms-3'>Necesidad</h3>
+                                                          </div>";
+                                                    echo "<p>Necesidad: " . htmlspecialchars($row['necesidad_entidad']) . "</p>";
+                                                }
 
                                                 echo "</div>"; // Fin de la columna 1
 
@@ -466,9 +477,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                                                 <i class='fa fa-image fs-4 text-white'></i>
                                                             </div>
                                                             <h3 class='ms-3'>Imagen</h3>
-                                                        </div>";
-                                                    echo "<img src='" . htmlspecialchars($row['foto_ruta']) . "' alt='Imagen de perfil' class='img-fluid' style='max-width: 700px; height: 300px;'>";
+                                                          </div>";
+                                                    echo "<img src='" . htmlspecialchars($row['foto_ruta']) . "' alt='Imagen de perfil' class='img-fluid' style='max-width: 100%; height: 200px; object-fit: cover; border-radius: 10px;'>";
                                                 }
+                                                
 
                                                 // Redes Sociales
                                                 if (!empty($row['redes_sociales_tipo']) || !empty($row['redes_sociales_links'])) {
@@ -494,6 +506,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                                         </div>";
                                                     echo "<p>Teléfono: " . htmlspecialchars($row['telefono']) . "</p>";
                                                 }
+                                               
 
                                                 // Ubicación
                                                 if (!empty($row['pais']) || !empty($row['provincia']) || !empty($row['canton']) || !empty($row['parroquia'])) {
@@ -734,6 +747,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                             <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" pattern="\d{10}" required>
                                             <small class="form-text text-muted">Introduce un número de teléfono válido de 10 dígitos.</small>
                                             <div id="telefono-error" class="text-danger" style="display: none;">El teléfono ya está registrado.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="necesidad"><i class="bi bi-pencil-square"></i> Necesidad:</label>
+                                            <textarea class="form-control" id="necesidad" name="necesidad" rows="4" maxlength="300" required></textarea>
+                                            <small class="form-text text-muted">Describe la necesidad en un máximo de 300 caracteres.</small>
+                                            <div id="necesidad-error" class="text-danger" style="display: none;">Este campo es obligatorio o excede el límite de caracteres.</div>
                                         </div>
 
 
@@ -1003,7 +1022,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                 t.telefono,
                 uo.pais, uo.provincia, uo.canton, uo.parroquia,
                 uo.altitud, uo.latitud,
-                e.Entidad_Nombre, e.rama_accion, e.ruc,
+                e.Entidad_Nombre, e.rama_accion, e.ruc,e.necesidad AS necesidad_entidad,
                 e.email AS entidad_email, e.representante,
                 e.fuente_financiacion, e.descripcion AS entidad_descripcion
             FROM Usuarios u
@@ -1199,6 +1218,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                                         <textarea class="form-control" id="entidad_descripcion" name="entidad_descripcion"
                                                             required><?= htmlspecialchars($row['entidad_descripcion']) ?></textarea>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                    <label for="necesidad_entidad">Necesidad de la Entidad:</label>
+                                                    <textarea class="form-control" id="necesidad_entidad" name="necesidad_entidad" required><?= htmlspecialchars($row['necesidad_entidad']) ?></textarea>
+                                                </div>
+
                                                 </div>
                                             </div>
 
@@ -1306,7 +1331,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
 
 <div class="container-fluid bg-dark text-secondary p-5">
     <div class="row g-5 justify-content-center">
-    <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6">
             <h3 class="text-white mb-4">CEOSSOLUCIONES S.A.S.</h3>
             <div class="d-flex justify-content-center">
                 <img src="img/KELA.png" alt="Logo de la Empresa" class="img-fluid" style="max-width: 60%; height: auto;">
@@ -1320,7 +1345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                 <a class="text-secondary mb-2" href="service.php"><i class="bi bi-arrow-right text-primary me-2"></i>Registrate/login</a>
             </div>
         </div>
-       
+
         <div class="col-lg-3 col-md-6">
             <h3 class="text-white mb-4">Síguenos</h3>
             <div class="d-flex justify-content-center">
@@ -1337,7 +1362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
     <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudandoEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
 </div>
 
-    <!-- Footer End -->
+<!-- Footer End -->
 
 <!-- Footer End -->
 
