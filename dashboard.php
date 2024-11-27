@@ -859,7 +859,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
 
                                         <!-- Botón para obtener ubicación actual -->
                                         <button type="button" class="btn btn-secondary" onclick="obtenerUbicacionActual()">Ubicación Actual</button>
-
+<br>
                                         <button type="submit" name="add_combined" class="btn btn-primary">Agregar</button>
 
                                         <script>

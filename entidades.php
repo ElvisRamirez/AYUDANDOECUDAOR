@@ -10,7 +10,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>CONSULT - Consultancy Website Template</title>
+    <title>AYUDANDO ECUADOR ONLINE</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -328,7 +328,7 @@ $result = $conn->query($sql);
 
 
 <!-- Team Start -->
-<div class="container-fluid py-6 px-5">
+<!-- <div class="container-fluid py-6 px-5">
     <div class="text-center mx-auto mb-5" style="max-width: 600px;">
         <h1 class="display-5 mb-0">Our Team Members</h1>
         <hr class="w-25 mx-auto bg-primary">
@@ -362,7 +362,7 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Team End -->
 
 
