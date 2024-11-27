@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>CONSULT - Consultancy Website Template</title>
+    <title>AYUDANDO ECUADOR ONLINE</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -557,7 +557,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                             <h2>Configuración</h2>
 
                             <form method="post" enctype="multipart/form-data">
-                                <h1>Añadir Clasificación y Entidad</h1>
+                                <!-- <h1>Añadir Entidad</h1> -->
                                 <div class="row">
 
                                     <div class="col-md-4">
@@ -861,7 +861,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                                         <button type="button" class="btn btn-secondary" onclick="obtenerUbicacionActual()">Ubicación Actual</button>
 <br>
                                         <button type="submit" name="add_combined" class="btn btn-primary">Agregar</button>
-
+<br>
+<br>
                                         <script>
                                             let data = {};
 
