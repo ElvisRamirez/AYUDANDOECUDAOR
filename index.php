@@ -10,7 +10,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>AYUDANDO ECUADOR ONLINE</title>
+    <title>AYUDA ECUADOR ONLINE</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -67,7 +67,7 @@ session_start();
     <a href="index.php" class="navbar-brand p-0">
     <h1 class="m-0 text-uppercase">
         <i class="fas fa-hands-helping text-warning me-2"></i> <!-- Ícono de manos de ayuda -->
-        <span class="text-blue">Ayudando</span> 
+        <span class="text-blue">Ayuda</span> 
         <span class="text-primary">Ecuador</span>
     </h1>
 </a>
@@ -108,7 +108,7 @@ session_start();
                     <img class="w-100" src="img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase">Ayudando Ecuador</h5>
+                            <h5 class="text-white text-uppercase">Ayuda Ecuador</h5>
                             <h1 class="display-1 text-white mb-md-4">Unidos por el Bienestar de Todos</h1>
                             <p class="text-white">Conectamos a las entidades que necesitan ayuda con quienes desean contribuir.</p>
                             <p class="text-white">Tu apoyo puede marcar la diferencia en la vida de muchos.</p>
@@ -149,8 +149,8 @@ session_start();
     <div class="container-fluid bg-secondary p-0">
         <div class="row g-0">
             <div class="col-lg-6 py-6 px-5">
-                <h1 class="display-5 mb-4">Bienvenido a Ayudando <span class="text-primary">Ecuador</span></h1>
-                <h4 class="text-primary mb-4">En Ayudando Ecuador, nuestra misión es conectar a quienes necesitan ayuda con aquellos dispuestos a ofrecerla. Creemos en un Ecuador solidario, donde cada acción cuenta y cada mano puede hacer la diferencia.</h4>
+                <h1 class="display-5 mb-4">Bienvenido a Ayuda <span class="text-primary">Ecuador</span></h1>
+                <h4 class="text-primary mb-4">En Ayuda Ecuador, nuestra misión es conectar a quienes necesitan ayuda con aquellos dispuestos a ofrecerla. Creemos en un Ecuador solidario, donde cada acción cuenta y cada mano puede hacer la diferencia.</h4>
                 <p class="mb-4">Nos enfocamos en brindar apoyo a refugios de animales, personas mayores, y comunidades afectadas por desastres naturales. A través de nuestra plataforma, puedes encontrar diversas entidades que requieren ayuda y formas en las que tú puedes contribuir.</p>
                 <a href="" class="btn btn-primary py-md-3 px-md-5 rounded-pill">Ver Entidades</a>
             </div>
@@ -314,7 +314,7 @@ session_start();
 </div>
 
 <div class="container-fluid bg-dark text-secondary text-center border-top py-4 px-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-    <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudandoEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
+    <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
 </div>
 
     <!-- Footer End -->

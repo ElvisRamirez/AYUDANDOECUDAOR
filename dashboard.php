@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                 if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
                     // Guardar la ruta en la base de datos
                     try {
-                        $conn = new mysqli('localhost', 'root', 'admin', 'ayudandoecuador1');
+                        $conn = new mysqli('localhost', 'root', 'admin', 'Ayudaecuador1');
                         if ($conn->connect_error) {
                             die("Error en la conexión: " . $conn->connect_error);
                         }
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>AYUDANDO ECUADOR ONLINE</title>
+    <title>AYUDA ECUADOR ONLINE</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -236,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
         <h1 class="m-0 text-uppercase">
             <i class="fas fa-hands-helping text-warning me-2"></i> <!-- Ícono de manos de ayuda -->
-            <span class="text-blue">Ayudando</span>
+            <span class="text-blue">Ayuda</span>
             <span class="text-primary">Ecuador</span>
         </h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -1360,7 +1360,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
 </div>
 
 <div class="container-fluid bg-dark text-secondary text-center border-top py-4 px-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-    <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudandoEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
+    <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
 </div>
 
 <!-- Footer End -->
