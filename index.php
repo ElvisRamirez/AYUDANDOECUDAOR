@@ -64,36 +64,36 @@ session_start();
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
-    <a href="index.php" class="navbar-brand p-0">
-    <h1 class="m-0 text-uppercase">
-        <i class="fas fa-hands-helping text-warning me-2"></i> <!-- Ícono de manos de ayuda -->
-        <span class="text-blue">Ayuda</span> 
-        <span class="text-primary">Ecuador</span>
-    </h1>
-</a>
+        <a href="index.php" class="navbar-brand p-0">
+            <h1 class="m-0 text-uppercase">
+                <i class="fas fa-hands-helping text-warning me-2"></i> <!-- Ícono de manos de ayuda -->
+                <span class="text-blue">Ayuda</span>
+                <span class="text-primary">Ecuador</span>
+            </h1>
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav ms-auto py-0 me-n3">
-        <a href="index.php" class="nav-item nav-link">Inicio</a>
-        <a href="entidades.php" class="nav-item nav-link">Entidades</a>
+            <div class="navbar-nav ms-auto py-0 me-n3">
+                <a href="index.php" class="nav-item nav-link">Inicio</a>
+                <a href="entidades.php" class="nav-item nav-link">Entidades</a>
 
-        <?php
-       
+                <?php
 
-        if (isset($_SESSION['id_usuario'])) {
-            // Si el usuario ha iniciado sesión, muestra solo Dashboard y Cerrar Sesión
-            echo '<a href="dashboard.php" class="nav-item nav-link">Dashboard</a>';
-            echo '<a href="logout.php" class="nav-item nav-link text-danger">Cerrar Sesión</a>';
-        } else {
-            // Si el usuario no ha iniciado sesión, muestra el botón de Registro/Login
-            echo '<a href="service.php" class="nav-item nav-link">Registro/Login</a>';
-        }
-        ?>
-    </div>
-</div>
+
+                if (isset($_SESSION['id_usuario'])) {
+                    // Si el usuario ha iniciado sesión, muestra solo Dashboard y Cerrar Sesión
+                    echo '<a href="dashboard.php" class="nav-item nav-link">Dashboard</a>';
+                    echo '<a href="logout.php" class="nav-item nav-link text-danger">Cerrar Sesión</a>';
+                } else {
+                    // Si el usuario no ha iniciado sesión, muestra el botón de Registro/Login
+                    echo '<a href="service.php" class="nav-item nav-link">Registro/Login</a>';
+                }
+                ?>
+            </div>
+        </div>
 
 
     </nav>
@@ -285,37 +285,37 @@ session_start();
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary p-5">
-    <div class="row g-5 justify-content-center">
-    <div class="col-lg-4 col-md-6">
-            <h3 class="text-white mb-4">CEOSSOLUCIONES S.A.S.</h3>
-            <div class="d-flex justify-content-center">
-                <img src="img/KELA.png" alt="Logo de la Empresa" class="img-fluid" style="max-width: 60%; height: auto;">
+        <div class="row g-5 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <h3 class="text-white mb-4">CEOSSOLUCIONES S.A.S.</h3>
+                <div class="d-flex justify-content-center">
+                    <img src="img/KELA.png" alt="Logo de la Empresa" class="img-fluid" style="max-width: 60%; height: auto;">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <h3 class="text-white mb-4">Enlaces Rápidos</h3>
-            <div class="d-flex flex-column justify-content-start">
-                <a class="text-secondary mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Inicio</a>
-                <a class="text-secondary mb-2" href="entidades.php"><i class="bi bi-arrow-right text-primary me-2"></i>Entidades</a>
-                <a class="text-secondary mb-2" href="service.php"><i class="bi bi-arrow-right text-primary me-2"></i>Registrate/login</a>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Enlaces Rápidos</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-secondary mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Inicio</a>
+                    <a class="text-secondary mb-2" href="entidades.php"><i class="bi bi-arrow-right text-primary me-2"></i>Entidades</a>
+                    <a class="text-secondary mb-2" href="service.php"><i class="bi bi-arrow-right text-primary me-2"></i>Registrate/login</a>
+                </div>
             </div>
-        </div>
-       
-        <div class="col-lg-3 col-md-6">
-            <h3 class="text-white mb-4">Síguenos</h3>
-            <div class="d-flex justify-content-center">
-                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Síguenos</h3>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid bg-dark text-secondary text-center border-top py-4 px-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-    <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
-</div>
+    <div class="container-fluid bg-dark text-secondary text-center border-top py-4 px-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
+    </div>
 
     <!-- Footer End -->
 
