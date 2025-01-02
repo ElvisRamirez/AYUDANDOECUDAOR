@@ -58,11 +58,6 @@ session_start();
 }
 
 /* Hacer que las tarjetas se ajusten con el grid */
-.col-md-4 {
-    
-    flex: 1 0 30%; /* Esto hará que cada tarjeta ocupe aproximadamente un 30% del ancho de su contenedor */
-    max-width: 300px; /* Limitar el tamaño máximo de la columna */
-}
 
 /* Agregar barra de desplazamiento a la descripción */
 .descripcion {
@@ -84,13 +79,6 @@ session_start();
     object-fit: cover; /* Mantiene la proporción de la imagen */
 }
 /* Ajustando espacio con márgenes en las columnas */
-.col-md-4 {
-    padding-left: 10px;
-    flex: 1 0 30%;
-    max-width: 300px;
-    margin-right: 15px; /* Espacio entre columnas */
-    margin-bottom: 20px; /* Espacio entre filas */
-}
 
 /* Para quitar el margen en la última columna de cada fila */
 .col-md-4:last-child {
@@ -248,26 +236,19 @@ $result = $conn->query($sql);
     <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Filtrar</button>
 </form>
 <div id="entidades" class="container-fluid py-4">
-
-    <div class="row">
+    <div class="row g-0"> <!-- Sin espacios entre columnas -->
         <?php
         if ($result->num_rows > 0) {
-            // Mostrar todas las entidades en tarjetas
             while ($row = $result->fetch_assoc()) {
-                // Obtener la ruta de la foto
                 $fotoRuta = !empty($row['foto_ruta']) ? htmlspecialchars($row['foto_ruta']) : null;
-
-                // Generar HTML para la imagen o el marcador de "Sin imagen"
-                $imgHtml = $fotoRuta 
-                ? "<img src='" . $fotoRuta . "' class='card-img-top img-fluid custom-img' alt='Imagen de la entidad'>"
-                : "<div class='card-img-top bg-secondary custom-img' style='display: flex; align-items: center; justify-content: center;'>
-                    <span class='text-white'>Sin imagen disponible</span>
-                   </div>";
-
-                // Generar la tarjeta
+                $imgHtml = $fotoRuta
+                    ? "<img src='" . $fotoRuta . "' class='card-img-top img-fluid custom-img' alt='Imagen de la entidad'>"
+                    : "<div class='card-img-top bg-secondary custom-img' style='display: flex; align-items: center; justify-content: center;'>
+                        <span class='text-white'>Sin imagen disponible</span>
+                      </div>";
                 echo "
-                    <div class='col-lg-4 col-md-6 col-sm-12 mb-4'>
-                        <div class='card shadow-lg border-light rounded-3 position-relative overflow-hidden'>
+                     <div class='col-lg-3 col-md-6 col-12 mb-4'>  <!-- Ajustado para pantallas grandes, medianas y pequeñas -->
+                        <div class='card shadow-lg border-light rounded-3'>
                             <div class='card-overlay d-flex justify-content-center align-items-center'>
                                 <a href='ver_entidad.php?id=" . htmlspecialchars($row['id_dato']) . "' class='btn btn-primary'>Ver</a>
                             </div>
@@ -291,17 +272,16 @@ $result = $conn->query($sql);
 
 
 <style>
+
+
+.row {
+    margin-left: 0; 
+    margin-right: 0; /* Evita márgenes laterales en la fila */
+}
+
     /* Estilo de la imagen y contenedor */
-.card {
-    position: relative;
-    overflow: hidden;
-}
-#entidades .row {
-    margin: 0; /* Quita márgenes */
-}
-#entidades .col-sm-12 {
-    padding: 0; /* Quita padding */
-}
+
+
 
 .card-overlay {
     position: absolute;
@@ -384,43 +364,7 @@ $result = $conn->query($sql);
 <!-- About End -->
 
 
-<!-- Team Start -->
-<!-- <div class="container-fluid py-6 px-5">
-    <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-        <h1 class="display-5 mb-0">Our Team Members</h1>
-        <hr class="w-25 mx-auto bg-primary">
-    </div>
-    <div class="row g-5">
-        <div class="col-lg-4">
-            <div class="team-item position-relative overflow-hidden">
-                <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
-                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
-                    <h3 class="text-white">Full Name</h3>
-                    <p class="text-white text-uppercase mb-0">Designation</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="team-item position-relative overflow-hidden">
-                <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
-                    <h3 class="text-white">Full Name</h3>
-                    <p class="text-white text-uppercase mb-0">Designation</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="team-item position-relative overflow-hidden">
-                <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
-                    <h3 class="text-white">Full Name</h3>
-                    <p class="text-white text-uppercase mb-0">Designation</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- Team End -->
+
 
 
 <!-- Footer Start -->
