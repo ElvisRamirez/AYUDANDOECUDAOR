@@ -74,8 +74,10 @@ session_start();
 
 /* Estilos adicionales opcionales */
 .card-img-top {
-    
-    height: 200px; /* Limitar la altura de la imagen */
+    margin: 5px;
+    width: 250px;
+    justify-self: center;
+    height: auto; /* Limitar la altura de la imagen */
     object-fit: cover; /* Asegura que la imagen se recorte de manera uniforme */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -94,6 +96,16 @@ session_start();
 .col-md-4:last-child {
     margin-right: 0;
 }
+  .custom-img {
+    width: 90%; /* Asegura que ocupe todo el ancho disponible */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: contain; /* Mantiene las proporciones de la imagen sin recortar */
+    background-color: #f8f9fa; /* Fondo claro para mejorar la apariencia */
+    display: flex; /* Para centrar contenido si no hay imagen */
+    justify-content: center;
+    align-items: center;
+  }
+
 
 
     </style>
@@ -235,7 +247,8 @@ $result = $conn->query($sql);
     
     <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Filtrar</button>
 </form>
-<div id="entidades" class="container py-4">
+<div id="entidades" class="container-fluid py-4">
+
     <div class="row">
         <?php
         if ($result->num_rows > 0) {
@@ -246,22 +259,24 @@ $result = $conn->query($sql);
 
                 // Generar HTML para la imagen o el marcador de "Sin imagen"
                 $imgHtml = $fotoRuta 
-                    ? "<img src='" . $fotoRuta . "' class='card-img-top' alt='Imagen de la entidad'>"
-                    : "<div class='card-img-top bg-secondary' style='height: 200px; display: flex; align-items: center; justify-content: center;'>
-                        <span class='text-white'>Sin imagen disponible</span>
-                       </div>";
+                ? "<img src='" . $fotoRuta . "' class='card-img-top img-fluid custom-img' alt='Imagen de la entidad'>"
+                : "<div class='card-img-top bg-secondary custom-img' style='display: flex; align-items: center; justify-content: center;'>
+                    <span class='text-white'>Sin imagen disponible</span>
+                   </div>";
 
                 // Generar la tarjeta
                 echo "
-                    <div class='col-md-4 col-sm-6 col-12 mb-4'>
-                        <div class='card shadow-lg border-light rounded-3 transition-transform transform-hover'>
+                    <div class='col-lg-4 col-md-6 col-sm-12 mb-4'>
+                        <div class='card shadow-lg border-light rounded-3 position-relative overflow-hidden'>
+                            <div class='card-overlay d-flex justify-content-center align-items-center'>
+                                <a href='ver_entidad.php?id=" . htmlspecialchars($row['id_dato']) . "' class='btn btn-primary'>Ver</a>
+                            </div>
                             $imgHtml
                             <div class='card-body'>
                                 <h5 class='card-title text-center'>" . htmlspecialchars($row['Entidad_Nombre']) . "</h5>
                                 <p class='card-text'><strong>Clasificación:</strong> " . htmlspecialchars($row['clasificacion_tipo']) . "</p>
                                 <p class='card-text'><strong>Rama de Acción:</strong> " . htmlspecialchars($row['rama_accion']) . "</p>
                                 <p class='card-text'><strong>Provincia:</strong> " . htmlspecialchars($row['provincia']) . "</p>
-                                <a href='ver_entidad.php?id=" . htmlspecialchars($row['id_dato']) . "' class='btn btn-primary w-100 transition-bg hover-btn'>Ver</a>
                             </div>
                         </div>
                     </div>
@@ -274,7 +289,49 @@ $result = $conn->query($sql);
     </div>
 </div>
 
+
 <style>
+    /* Estilo de la imagen y contenedor */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+#entidades .row {
+    margin: 0; /* Quita márgenes */
+}
+#entidades .col-sm-12 {
+    padding: 0; /* Quita padding */
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2; /* Asegura que esté por encima */
+}
+
+.card:hover .card-overlay {
+    opacity: 1; /* Visible al pasar el mouse */
+}
+
+.card-overlay a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(189, 19, 19, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+.card-overlay a:hover {
+    background-color: rgb(221, 224, 228);
+}
     /* Estilo para las tarjetas */
     .card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;

@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_combined'])) {
                 if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
                     // Guardar la ruta en la base de datos
                     try {
-                        $conn = new mysqli('localhost', 'root', 'admin', 'Ayudaecuador1');
+                        $conn = new mysqli('localhost', 'root', 'admin', 'ayudandoecuador1');
                         if ($conn->connect_error) {
                             die("Error en la conexión: " . $conn->connect_error);
                         }

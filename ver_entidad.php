@@ -128,6 +128,7 @@ session_start();
         e.rama_accion,
         e.descripcion AS entidad_descripcion,
         e.necesidad AS necesidad_entidad,
+        e.representante,
         f.foto_ruta,
         c.tipo AS clasificacion_tipo,
         uo.provincia,
@@ -247,8 +248,13 @@ session_start();
 <style>
 /* Clase para imágenes con tamaño fijo y bordes redondeados */
 .rounded-image {
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    height: 200px; /* Tamaño fijo en altura */
+    width: 90%; /* Asegura que ocupe todo el ancho disponible */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: contain; /* Mantiene las proporciones de la imagen sin recortar */
+    background-color: #f8f9fa; /* Fondo claro para mejorar la apariencia */
+  
+    justify-content: center;
+    align-items: center;
     object-fit: cover; /* Ajusta la imagen sin deformarla */
     border-radius: 15px; /* Bordes redondeados */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
@@ -278,7 +284,7 @@ session_start();
                 </div>
                 <h3 class='ms-3'>Contactos:</h3>
             </div>
-
+                   <p><strong>Representante:</strong> " . (empty($row['representante']) ? "No disponible" : htmlspecialchars($row['representante'])) . "</p>
                                 <p><strong>telefono:</strong>" . (empty($row['telefono']) ? "No se encontraron teléfonos para esta entidad." : htmlspecialchars($row['telefono'])) . "</p>
                   
                 <p><strong>Correo Electrónico:</strong> <a href='mailto:" . htmlspecialchars($row['usuario_correo']) . "'>" . htmlspecialchars($row['usuario_correo']) . "</a></p>

@@ -228,10 +228,21 @@ session_start();
             <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-secondary text-center px-5">
                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                        <i class="fa fa-heart fa-2x"></i> <!-- Icono para donaciones -->
+                    </div>
+                    <h3 class="mb-3">Cómo Ayudar</h3>
+                    <p class="mb-0">Información sobre cómo puedes colaborar con las entidades, ya sea a través de donaciones, voluntariado o apoyo en sus actividades.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item bg-secondary text-center px-5">
+                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
                         <i class="fa fa-users fa-2x"></i> <!-- Icono para comunidad -->
                     </div>
                     <h3 class="mb-3">Conoce a la Comunidad</h3>
+                  
                     <p class="mb-0">Infórmate sobre las personas detrás de las entidades que ayudan y cómo puedes involucrarte o apoyarlas en su labor.</p>
+                    <p class="mb-0">(Proximamente)</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
@@ -241,17 +252,10 @@ session_start();
                     </div>
                     <h3 class="mb-3">Eventos y Actividades</h3>
                     <p class="mb-0">Mantente al tanto de eventos y actividades organizadas por entidades de ayuda, donde puedes participar y contribuir.</p>
+                    <p class="mb-0">(Proximamente)</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-secondary text-center px-5">
-                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
-                        <i class="fa fa-heart fa-2x"></i> <!-- Icono para donaciones -->
-                    </div>
-                    <h3 class="mb-3">Cómo Ayudar</h3>
-                    <p class="mb-0">Información sobre cómo puedes colaborar con las entidades, ya sea a través de donaciones, voluntariado o apoyo en sus actividades.</p>
-                </div>
-            </div>
+            
 
         </div>
     </div>
