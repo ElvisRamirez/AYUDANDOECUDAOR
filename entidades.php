@@ -211,64 +211,10 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filtrar por Provincia</title>
+    
 </head>
+
 <body>
-
-
-<form method="GET" action="" style="max-width: 600px; margin:150px auto; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h3 style="text-align: center; margin-bottom: 15px;">Filtrar por provincia</h3>
-    
-    <div class="form-group">
-        <label for="provincia">Selecciona una provincia:</label>
-        <select name="provincia" id="provincia" class="form-control">
-            <option value="">Seleccionar provincia</option> <!-- Opción por defecto -->
-            <?php
-            // Mostrar todas las provincias
-            while ($provincia_row = $provincia_result->fetch_assoc()) {
-                // Si la provincia está seleccionada, marcarla como seleccionada
-                $selected = (isset($_GET['provincia']) && $_GET['provincia'] == $provincia_row['provincia']) ? 'selected' : '';
-                echo "<option value='" . htmlspecialchars($provincia_row['provincia']) . "' $selected>" . htmlspecialchars($provincia_row['provincia']) . "</option>";
-            }
-            ?>
-        </select>
-    </div>
-    
-    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Filtrar</button>
-</form>
-<div id="entidades" class="container-fluid py-4">
-    <div class="row g-0"> <!-- Sin espacios entre columnas -->
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $fotoRuta = !empty($row['foto_ruta']) ? htmlspecialchars($row['foto_ruta']) : null;
-                $imgHtml = $fotoRuta
-                    ? "<img src='" . $fotoRuta . "' class='card-img-top img-fluid custom-img' alt='Imagen de la entidad'>"
-                    : "<div class='card-img-top bg-secondary custom-img' style='display: flex; align-items: center; justify-content: center;'>
-                        <span class='text-white'>Sin imagen disponible</span>
-                      </div>";
-                echo "
-                     <div class='col-lg-3 col-md-6 col-12 mb-4'>  <!-- Ajustado para pantallas grandes, medianas y pequeñas -->
-                        <div class='card shadow-lg border-light rounded-3'>
-                            <div class='card-overlay d-flex justify-content-center align-items-center'>
-                                <a href='ver_entidad.php?id=" . htmlspecialchars($row['id_dato']) . "' class='btn btn-primary'>Ver</a>
-                            </div>
-                            $imgHtml
-                            <div class='card-body'>
-                                <h5 class='card-title text-center'>" . htmlspecialchars($row['Entidad_Nombre']) . "</h5>
-                                <p class='card-text'><strong>Clasificación:</strong> " . htmlspecialchars($row['clasificacion_tipo']) . "</p>
-                                <p class='card-text'><strong>Rama de Acción:</strong> " . htmlspecialchars($row['rama_accion']) . "</p>
-                                <p class='card-text'><strong>Provincia:</strong> " . htmlspecialchars($row['provincia']) . "</p>
-                            </div>
-                        </div>
-                    </div>
-                ";
-            }
-        } else {
-            echo "<p class='text-center text-muted'>No se encontraron detalles para las entidades.</p>";
-        }
-        ?>
-    </div>
-</div>
 
 
 <style>
@@ -348,6 +294,62 @@ $result = $conn->query($sql);
     }
 </style>
 
+<form method="GET" action="" style="max-width: 600px; margin:150px auto; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h3 style="text-align: center; margin-bottom: 15px;">Filtrar por provincia</h3>
+    
+    <div class="form-group">
+        <label for="provincia">Selecciona una provincia:</label>
+        <select name="provincia" id="provincia" class="form-control">
+            <option value="">Seleccionar provincia</option> <!-- Opción por defecto -->
+            <?php
+            // Mostrar todas las provincias
+            while ($provincia_row = $provincia_result->fetch_assoc()) {
+                // Si la provincia está seleccionada, marcarla como seleccionada
+                $selected = (isset($_GET['provincia']) && $_GET['provincia'] == $provincia_row['provincia']) ? 'selected' : '';
+                echo "<option value='" . htmlspecialchars($provincia_row['provincia']) . "' $selected>" . htmlspecialchars($provincia_row['provincia']) . "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Filtrar</button>
+</form>
+<div id="entidades" class="container-fluid py-4">
+    <div class="row g-0"> <!-- Sin espacios entre columnas -->
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $fotoRuta = !empty($row['foto_ruta']) ? htmlspecialchars($row['foto_ruta']) : null;
+                $imgHtml = $fotoRuta
+                    ? "<img src='" . $fotoRuta . "' class='card-img-top img-fluid custom-img' alt='Imagen de la entidad'>"
+                    : "<div class='card-img-top bg-secondary custom-img' style='display: flex; align-items: center; justify-content: center;'>
+                        <span class='text-white'>Sin imagen disponible</span>
+                      </div>";
+                echo "
+                     <div class='col-lg-3 col-md-6 col-12 mb-4'>  <!-- Ajustado para pantallas grandes, medianas y pequeñas -->
+                        <div class='card shadow-lg border-light rounded-3'>
+                            <div class='card-overlay d-flex justify-content-center align-items-center'>
+                                <a href='ver_entidad.php?id=" . htmlspecialchars($row['id_dato']) . "' class='btn btn-primary'>Ver</a>
+                            </div>
+                            $imgHtml
+                            <div class='card-body'>
+                                <h5 class='card-title text-center'>" . htmlspecialchars($row['Entidad_Nombre']) . "</h5>
+                                <p class='card-text'><strong>Clasificación:</strong> " . htmlspecialchars($row['clasificacion_tipo']) . "</p>
+                                <p class='card-text'><strong>Rama de Acción:</strong> " . htmlspecialchars($row['rama_accion']) . "</p>
+                                <p class='card-text'><strong>Provincia:</strong> " . htmlspecialchars($row['provincia']) . "</p>
+                            </div>
+                        </div>
+                    </div>
+                ";
+            }
+        } else {
+            echo "<p class='text-center text-muted'>No se encontraron detalles para las entidades.</p>";
+        }
+        ?>
+    </div>
+</div>
+
+
 
 
 
@@ -370,12 +372,12 @@ $result = $conn->query($sql);
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-secondary p-5">
     <div class="row g-5 justify-content-center">
-    <div class="col-lg-4 col-md-6">
+    <!-- <div class="col-lg-4 col-md-6">
             <h3 class="text-white mb-4">CEOSSOLUCIONES S.A.S.</h3>
             <div class="d-flex justify-content-center">
                 <img src="img/KELA.png" alt="Logo de la Empresa" class="img-fluid" style="max-width: 60%; height: auto;">
             </div>
-        </div>
+        </div> -->
         <div class="col-lg-3 col-md-6">
             <h3 class="text-white mb-4">Enlaces Rápidos</h3>
             <div class="d-flex flex-column justify-content-start">

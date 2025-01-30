@@ -290,12 +290,12 @@ session_start();
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary p-5">
         <div class="row g-5 justify-content-center">
-            <div class="col-lg-4 col-md-6">
+            <!-- <div class="col-lg-4 col-md-6">
                 <h3 class="text-white mb-4">CEOSSOLUCIONES S.A.S.</h3>
                 <div class="d-flex justify-content-center">
                     <img src="img/KELA.png" alt="Logo de la Empresa" class="img-fluid" style="max-width: 60%; height: auto;">
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Enlaces Rápidos</h3>
                 <div class="d-flex flex-column justify-content-start">
@@ -318,7 +318,8 @@ session_start();
     </div>
 
     <div class="container-fluid bg-dark text-secondary text-center border-top py-4 px-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p>
+        <!-- <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">KELA IT CONSULTING</a></p> -->
+        <p class="m-0">&copy; <a class="text-secondary border-bottom" href="#">AyudaEcuador</a>. Todos los Derechos Reservados. Diseñado por <a class="text-secondary border-bottom" href="">Grupo Integrativa</a></p>
     </div>
 
     <!-- Footer End -->

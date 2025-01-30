@@ -96,13 +96,14 @@ CREATE TABLE IF NOT EXISTS Entidad (
   CONSTRAINT Entidad_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
 );
 
-DESCRIBE Entidad;
+
+
 
 -- Deshabilitar temporalmente las verificaciones de claves foráneas
 SET FOREIGN_KEY_CHECKS = 0;
-
+use ayudandoecuador1
 -- Eliminar los datos de todas las tablas
-TRUNCATE TABLE Usuarios;
+TRUNCATE TABLE usuarios;
 TRUNCATE TABLE Ubicacion;
 TRUNCATE TABLE Telefonos;
 TRUNCATE TABLE redes_sociales;
@@ -116,87 +117,7 @@ TRUNCATE TABLE Datos;
 SET FOREIGN_KEY_CHECKS = 1;
 
 
-         SELECT foto_ruta FROM fotos;
-                                                                                   SELECT 
-                                                    u.id_usuario,
-                                                    u.Nombre,
-                                                    u.Apellido,
-                                                    u.correo,
-                                                    u.contrasenia,
-                                                    
-                                                    -- Datos relacionados con el usuario
-                                                    d.id_datos,
-                                                    
-                                                    -- Clasificación
-                                                    c.tipo AS clasificacion_tipo,
-                                                    
-                                                    -- Datos adicionales
-                                                    da.tipo_cuenta,
-                                                    da.cuentas_bancarias,
-                                                    
-                                                    -- Fotos
-                                                    f.id_fotos,
-                                                    f.foto_ruta,
-                                                    
-                                                    -- Redes sociales
-                                                    rs.tipo_red AS redes_sociales_tipo,
-                                                    rs.links AS redes_sociales_links,
-                                                    
-                                                    -- Teléfonos
-                                                    t.telefono AS telefono,
-                                                    
-                                                    -- Ubicación
-                                                    uo.pais,
-                                                    uo.provincia,
-                                                    uo.canton,
-                                                    uo.parroquia,
-                                                    uo.altitud,
-                                                    uo.latitud,
-                                                    
-                                                    -- Entidad
-                                                    e.id_entidad,
-                                                    e.Entidad_Nombre,
-                                                    e.rama_accion,
-                                                    e.ruc,
-                                                    e.email AS entidad_email,
-                                                    e.representante,
-                                                    e.fuente_financiacion,
-                                                    e.descripcion AS entidad_descripcion
-
-                                                FROM Usuarios u
-                                                LEFT JOIN Datos d ON u.id_usuario = d.id_usuario
-                                                LEFT JOIN Clasificacion c ON d.id_datos = c.id_datos
-                                                LEFT JOIN datos_adicionales da ON d.id_datos = da.id_dato
-                                                LEFT JOIN fotos f ON d.id_datos = f.id_dato
-                                                LEFT JOIN redes_sociales rs ON d.id_datos = rs.id_datos
-                                                LEFT JOIN Telefonos t ON d.id_datos = t.id_datos
-                                                LEFT JOIN Ubicacion uo ON d.id_datos = uo.id_dato
-                                                LEFT JOIN Entidad e ON d.id_datos = e.id_dato
-                                                WHERE u.id_usuario = 1
-
- SELECT 
-        e.id_dato,
-        e.Entidad_Nombre,
-        e.rama_accion,
-        e.descripcion AS entidad_descripcion,
-        f.foto_ruta,
-        c.tipo AS clasificacion_tipo
-    FROM Entidad e
-    LEFT JOIN fotos f ON e.id_dato = f.id_dato
-    LEFT JOIN Clasificacion c ON e.id_dato = c.id_datos;
+       
     
     
-    
-    SELECT 
-        e.id_dato,
-        e.Entidad_Nombre,
-        e.rama_accion,
-        e.descripcion AS entidad_descripcion,
-        f.foto_ruta,  -- BLOB con los datos de la imagen
-        c.tipo AS clasificacion_tipo
-    FROM Entidad e
-    LEFT JOIN fotos f ON e.id_dato = f.id_dato
-    LEFT JOIN Clasificacion c ON e.id_dato = c.id_datos;
-    
-    select *from ubicacion
-    SELECT id_dato, foto_ruta FROM fotos LIMIT 10;
+ 
