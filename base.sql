@@ -1,11 +1,7 @@
-CREATE TABLE IF NOT EXISTS Datos (
-  id_datos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_usuario INT NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) -- Asegúrate de que esto esté correcto
-);
 
+create database ayudandoecuador1
 use ayudandoecuador1
-select * from datos_adicionales
+-- Crear la tabla Usuarios
 CREATE TABLE IF NOT EXISTS Usuarios (
   id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Nombre VARCHAR(255) NOT NULL,
@@ -13,89 +9,82 @@ CREATE TABLE IF NOT EXISTS Usuarios (
   correo VARCHAR(255) NOT NULL UNIQUE,
   contrasenia VARCHAR(255) NOT NULL
 );
-use ayudandoecuador1
-select *from Entidad
 
+-- Crear la tabla Datos
+CREATE TABLE IF NOT EXISTS Datos (
+  id_datos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) -- Asegúrate de que esto esté correcto
+);
+
+-- Crear la tabla Clasificacion
 CREATE TABLE IF NOT EXISTS Clasificacion (
-  id_clasificacion int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_datos int,
-  tipo varchar(255),
+  id_clasificacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_datos INT,
+  tipo VARCHAR(255),
   CONSTRAINT Clasificacion_id_datos_fk FOREIGN KEY (id_datos) REFERENCES Datos(id_datos)
 );
 
-
-ALTER TABLE Entidad
-ADD CONSTRAINT Entidad_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos);
-
+-- Crear la tabla datos_adicionales
 CREATE TABLE IF NOT EXISTS datos_adicionales (
   id_adicional INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_dato INT NOT NULL,
- tipo_cuenta VARCHAR(255),
- cuentas_bancarias VARCHAR(20),
+  tipo_cuenta VARCHAR(255),
+  cuentas_bancarias VARCHAR(20),
   CONSTRAINT datos_adicionales_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
- 
-
 );
+
+-- Crear la tabla fotos
 CREATE TABLE IF NOT EXISTS fotos (
-  id_fotos int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_dato int NOT NULL,
-   foto_ruta VARCHAR(255),
+  id_fotos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_dato INT NOT NULL,
+  foto_ruta VARCHAR(255),
   CONSTRAINT fotos_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
 );
 
-
-
+-- Crear la tabla redes_sociales
 CREATE TABLE IF NOT EXISTS redes_sociales (
-  id_redes int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_datos int NOT NULL,
-  tipo_red varchar(255),
-  links varchar(255),
+  id_redes INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_datos INT NOT NULL,
+  tipo_red VARCHAR(255),
+  links VARCHAR(255),
   CONSTRAINT redes_sociales_id_datos_fk FOREIGN KEY (id_datos) REFERENCES Datos(id_datos)
 );
 
+-- Crear la tabla Telefonos
 CREATE TABLE IF NOT EXISTS Telefonos (
-  id_telefonos int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_datos int,
-  telefono int NOT NULL,
+  id_telefonos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_datos INT,
+  telefono INT NOT NULL,
   CONSTRAINT Telefonos_id_datos_fk FOREIGN KEY (id_datos) REFERENCES Datos(id_datos)
 );
-use ayudandoecuador1
-select * from fotos
-select * from datos
-select * from entidad
-select * from usuarios
-select * from ubicacion
 
-TRUNCATE TABLE usuarios;
+-- Crear la tabla Ubicacion
 CREATE TABLE IF NOT EXISTS Ubicacion (
-  id_ubicacion int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_dato int NOT NULL,
-  pais varchar(255),
-  provincia varchar(255) NOT NULL,
-  canton varchar(255) NOT NULL, -- Campo para el cantón
-  parroquia varchar(255) NOT NULL, -- Campo para la parroquia
-  altitud decimal(9,6) NOT NULL,
-
- latitud decimal(9,6) NOT NULL,
-
+  id_ubicacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_dato INT NOT NULL,
+  pais VARCHAR(255),
+  provincia VARCHAR(255) NOT NULL,
+  canton VARCHAR(255) NOT NULL, -- Campo para el cantón
+  parroquia VARCHAR(255) NOT NULL, -- Campo para la parroquia
+  altitud DECIMAL(9,6) NOT NULL,
+  latitud DECIMAL(9,6) NOT NULL,
   CONSTRAINT Ubicacion_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
 );
-DROP TABLE IF EXISTS Entidad;
 
-
+-- Crear la tabla Entidad
 CREATE TABLE IF NOT EXISTS Entidad (
-  id_entidad int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_dato int NOT NULL,
-  Entidad_Nombre varchar(255) NOT NULL,
-  rama_accion varchar(255) NOT NULL,
-  ruc varchar(11) NOT NULL, -- Cambiar a varchar para evitar problemas con ceros a la izquierda
-  email varchar(255) NOT NULL,
-  representante varchar(255) NOT NULL,
-  fuente_financiacion varchar(255),
-  descripcion text,
+  id_entidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_dato INT NOT NULL,
+  Entidad_Nombre VARCHAR(255) NOT NULL,
+  rama_accion VARCHAR(255) NOT NULL,
+  ruc VARCHAR(11) NOT NULL, -- Cambiar a varchar para evitar problemas con ceros a la izquierda
+  email VARCHAR(255) NOT NULL,
+  representante VARCHAR(255) NOT NULL,
+  fuente_financiacion VARCHAR(255),
+  descripcion TEXT,
   CONSTRAINT Entidad_id_dato_fk FOREIGN KEY (id_dato) REFERENCES Datos(id_datos)
 );
-
 
 
 
@@ -118,6 +107,4 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
        
-    
-    
- 
+   
